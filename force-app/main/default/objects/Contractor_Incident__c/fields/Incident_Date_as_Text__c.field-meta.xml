@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incident_Date_as_Text__c</fullName>
+    <description>the ISO-8601 string returned by an LLM (e.g., &quot;2026-02-10T17:00:00Z&quot;) often chokes the CLT deserializer if the target is a DateTime type. By using String, we ensure the &quot;All-or-nothing&quot; rule doesn&apos;t trigger a failure.</description>
+    <externalId>false</externalId>
+    <label>Incident Date (as Text)</label>
+    <length>100</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

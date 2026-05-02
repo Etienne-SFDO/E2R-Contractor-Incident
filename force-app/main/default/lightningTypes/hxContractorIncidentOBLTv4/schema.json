@@ -1,0 +1,144 @@
+{
+  "lightning:supportsPersonalization" : true,
+  "description" : "Object-based Lightning Type schema for Contractor Incident (v4, API 65.0-aligned, date/time as text).",
+  "lightning:type" : "lightning__objectType",
+  "title" : "hxContractorIncidentOBLTv4",
+  "required" : [ ],
+  "properties" : {
+    "incidentDateTimeString" : {
+      "title" : "incidentDateTimeString",
+      "description" : "Appears as 'Date' : related to section Details of Reported Incident (Emergency Deployment)",
+      "lightning:type" : "lightning__textType"
+    },
+    "caseReference" : {
+      "title" : "caseReference",
+      "description" : "Appears as 'Case Ref' : The Case Reference Number.",
+      "lightning:type" : "lightning__textType"
+    },
+    "businesUnit" : {
+      "title" : "businesUnit",
+      "description" : "Appears as 'Client' : The Housing Association group company, or business unit",
+      "lightning:type" : "lightning__textType"
+    },
+    "region" : {
+      "title" : "region",
+      "description" : "Appears as 'Region' : Describes the geographical area of the incident",
+      "lightning:type" : "lightning__textType"
+    },
+    "claimantName" : {
+      "title" : "claimantName",
+      "description" : "Appears as 'Claimant Name' : Usually first and last names combined into a single string",
+      "lightning:type" : "lightning__textType"
+    },
+    "resident" : {
+      "title" : "resident",
+      "description" : "Appears as 'Resident' : describes the customer",
+      "lightning:type" : "lightning__textType"
+    },
+    "customerPhone" : {
+      "title" : "customerPhone",
+      "description" : "One of the phone fields, use the first one that's populated",
+      "lightning:type" : "lightning__textType"
+    },
+    "customerEmail" : {
+      "title" : "customerEmail",
+      "description" : "Appears as 'Email Address' : customer email (not ' Fax/Email')",
+      "lightning:type" : "lightning__textType"
+    },
+    "policyScheme" : {
+      "title" : "policyScheme",
+      "description" : "Appears as 'Scheme' related to Policy Details",
+      "lightning:type" : "lightning__textType"
+    },
+    "policyNumber" : {
+      "title" : "policyNumber",
+      "description" : "Appears as 'Policy Number' : related to Policy Details",
+      "lightning:type" : "lightning__textType"
+    },
+    "contractorGroup" : {
+      "title" : "contractorGroup",
+      "description" : "Appears as 'Contractor Group' : A business unit of the Housing Association",
+      "lightning:type" : "lightning__textType"
+    },
+    "reportedProblem" : {
+      "title" : "reportedProblem",
+      "description" : "Appears as 'Reported Problem' : relates to the Details of the reported incident",
+      "lightning:type" : "lightning__textType"
+    },
+    "fault" : {
+      "title" : "fault",
+      "description" : "Appears as 'Fault' : relates to the Details of the reported incident",
+      "lightning:type" : "lightning__textType"
+    },
+    "jobStatus" : {
+      "title" : "jobStatus",
+      "description" : "Appears as 'Job Status / Outcome' : related to the Details of Reported Incident.",
+      "lightning:type" : "lightning__textType"
+    },
+    "jobDescription" : {
+      "title" : "jobDescription",
+      "description" : "Appears as 'Description' : relates to Details of Reported Incident section",
+      "lightning:type" : "lightning__textType"
+    },
+    "reasonForEscalation" : {
+      "title" : "reasonForEscalation",
+      "description" : "Appears as 'Reason For Escalation' : relates to Escalation Details Section",
+      "lightning:type" : "lightning__textType"
+    },
+    "escalationNotes" : {
+      "title" : "escalationNotes",
+      "description" : "Appears as 'Escalation Notes' : relates to Escalation Details section",
+      "lightning:type" : "lightning__textType"
+    },
+    "customersAffected" : {
+      "title" : "customersAffected",
+      "description" : "Appears as 'No. of Customers Affected' : a numeric value",
+      "lightning:type" : "lightning__integerType"
+    },
+    "jobAddress" : {
+      "title" : "jobAddress",
+      "description" : "Appears as 'Address' : relates to Customer section",
+      "lightning:type" : "lightning__textType"
+    },
+    "affectedAddress" : {
+      "title" : "affectedAddress",
+      "description" : "Appears as 'Address of Properties Affected' : relates to Escalation Details section",
+      "lightning:type" : "lightning__textType"
+    },
+    "decantAddress" : {
+      "title" : "decantAddress",
+      "description" : "Appears as 'Decant Address' : relates to Escalation Details section",
+      "lightning:type" : "lightning__textType"
+    },
+    "caseEscalated" : {
+      "title" : "caseEscalated",
+      "description" : "Appears as 'Case Escalated' : relates to Policy Details section",
+      "lightning:type" : "lightning__booleanType"
+    },
+    "awaabsLaw" : {
+      "title" : "awaabsLaw",
+      "description" : "Appears as 'Awaabs Law' : relates to Policy Details section",
+      "lightning:type" : "lightning__booleanType"
+    },
+    "decant" : {
+      "title" : "decant",
+      "description" : "Appears as 'Decant Y/N' : relates to Escalation Details",
+      "lightning:type" : "lightning__booleanType"
+    },
+    "petsDecanted" : {
+      "title" : "petsDecanted",
+      "description" : "Appears as 'Pets Decanted' : relates to Escalation Details",
+      "lightning:type" : "lightning__booleanType"
+    },
+    "transportArranged" : {
+      "title" : "transportArranged",
+      "description" : "Appears as 'Transport Arranged' : relates to Escalation Details",
+      "lightning:type" : "lightning__booleanType"
+    },
+    "activityHistory" : {
+      "title" : "activityHistory",
+      "description" : "A collection of entries describing Job offer history status and final outcome",
+      "lightning:type" : "lightning__textType"
+    }
+  }
+}
