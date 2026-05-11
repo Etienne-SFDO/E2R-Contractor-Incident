@@ -12,10 +12,11 @@ Converts inbound emails into structured `Contractor_Incident__c` records, enrich
 ## Prerequisites
 
 - Salesforce org with **Einstein / Agentforce** licence (required for Prompt Templates)
-- - Check that **Setup > Prompt Templates** exists  
-- Salesforce CLI (`sf`) — latest version recommended.
-- -Tested with `@salesforce/cli/2.131.7`. [Install guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- Org authenticated: `sf org login web --alias <your-alias>`
+- - Enable Einstein / Gen AI / Agentforce (As of 11 May 26, this was Setup >  Einstein Setup > Turn On Einstein)
+- - Check that **Prompt Templates** exist (App Launcher > Agentforce Studio > Prompt Templates)   
+- **Salesforce CLI** (Command Line Interface) is installed.  Checkin in a terminal with "sf"  — latest version recommended (sf -update)
+- -  This app was tested with `@salesforce/cli/2.131.7`. [Install guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+- -  Ensure CLI is authenticated to your org and set to default: "sf org login web --alias my-org-alias --set-default"
 - LLM model: tested with **Gemini 2.5 Flash** (`sfdc_ai__DefaultVertexAIGemini25Flash001`). The prompt template references this model by default. If your org uses a different model you can update it in Setup > Prompt Builder after deployment.
 
 ## Installation
