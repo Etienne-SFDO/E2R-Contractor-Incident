@@ -49,3 +49,6 @@ $RECYCLE.BIN/
 
 # Claude Code session files
 .claude/
+
+# Local video files
+video/
