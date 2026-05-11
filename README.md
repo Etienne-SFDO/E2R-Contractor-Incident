@@ -65,7 +65,7 @@ sf project deploy start \
 🚧 ACTION REQUIRED
 ### 4. Set the Prompt Template Lightning Type
 
-The Lightning Object Type association is not preserved during deployment and must be set manually:
+Check that the the Lightning Object Type association was set during deployment, if not set manually:
 
 1. Go to **Setup > Prompt Builder**
 2. Open **hx Contractor Incident - Email**
