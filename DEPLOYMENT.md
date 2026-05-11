@@ -45,6 +45,65 @@ sf project deploy start \
   --target-org <alias>
 ```
 
+## Step 4: Post-Deployment Configuration (Manual)
+
+These steps must be completed in the target org after all three deploy steps succeed. Do them in this order.
+
+### 4.1 Grant Object Permissions
+
+The `aha_Contractor_Incident__c` object has no permission set in this project. Users will not see the object or its tab until permissions are granted.
+
+1. Go to **Setup > Permission Sets** (or **Profiles** if you are using profiles)
+2. Open the relevant permission set / profile for your users
+3. Under **Object Settings > Contractor Incident**, set:
+   - Object: Read, Create, Edit (add Delete if needed)
+   - Fields: enable Read/Edit on all `aha_` fields as required
+4. Save, then assign the permission set to the target users if using a permission set
+
+### 4.2 Validate and Activate Prompt Template
+
+The template deploys with settings intact, but must be saved as a new version and activated before it can be invoked by the Flow.
+
+1. Go to **Setup > Prompt Builder**
+2. Open **aha Contractor Incident - Email**
+3. Click **Edit** and review all settings — verify the prompt text, the grounding object, and that the **Response Format / Lightning Object Type** is set to `ahaContractorIncidentOBLTv4`
+4. Click **Save as New Version** (not just Save — this is required to create an activatable version)
+5. Once saved, click **Activate** on the new version
+
+### 4.3 Activate Flows
+
+Flows deploy as Draft. They must be saved as a new version before activating — activating the deployed version directly can cause errors.
+
+1. Go to **Setup > Flows**
+2. Open **aha Contractor Incident - Populate from Email**
+   - Click **Edit**
+   - Click **Save as New Version**
+   - Click **Activate**
+3. Open **aha Contractor Incident Panel**
+   - Click **Edit**
+   - Click **Save as New Version**
+   - Click **Activate**
+
+### 4.4 Activate the Lightning Record Page
+
+The Lightning page for `aha_Contractor_Incident__c` deploys but is not set as the org default.
+
+1. Navigate to the **Contractor Incident** tab and open (or create) any record — this opens the record page
+2. Click the **Setup (gear) icon** in the top-right > **Edit Page** to open the page in Lightning App Builder
+3. Click **Save**, then click **Activation**
+4. Select **Org Default** and click **Assign as Org Default**
+5. Save and close
+
+### 4.5 Configure Email Service Address
+
+The Email Service deploys without an address because the `runAsUser` is org-specific.
+
+1. Go to **Setup > Custom Code > Email Services**
+2. Open **aha_ContractorIncidentEmails**
+3. Click **New Email Address**
+4. Set **Run As User** to a valid active user in the target org
+5. Save and note the generated email address for testing
+
 ## Known Issues Requiring Manual Post-Deploy Steps
 
 ### Flows with GenAI Structured Output — Must Be Activated Manually
