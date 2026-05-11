@@ -16,52 +16,52 @@ You are not permitted to chain actions. Ever. Not even if the next step seems ob
 
 ## Project Overview
 
-This is a Salesforce project that routes inbound emails to `Contractor_Incident__c` records and enriches them via an LLM Prompt Template.
+This is a Salesforce project that routes inbound emails to `aha_Contractor_Incident__c` records and enriches them via an LLM Prompt Template.
 
 ## Architecture
 
 ### End-to-End Flow
 
 1. **Email arrives** at a custom Salesforce Email Service address (Setup > Custom Code > Email Services)
-2. **Apex handler** `hx_ContractorIncidentEmailParser` (`Messaging.InboundEmailHandler`) creates a `Contractor_Incident__c` record, populating email From/Subject/Body and setting `hx_AI_Enrichment_Status__c = 'Pending'`
-3. **Record-triggered Flow** `hx Contractor Incident - Populate from Email` fires on CREATE:
-   - Calls utility Flow `hx_util_Get_Queue_Id` to resolve the `Contractor_Incidents` queue ID
+2. **Apex handler** `aha_ContractorIncidentEmailParser` (`Messaging.InboundEmailHandler`) creates a `aha_Contractor_Incident__c` record, populating email From/Subject/Body and setting `aha_AI_Enrichment_Status__c = 'Pending'`
+3. **Record-triggered Flow** `aha Contractor Incident - Populate from Email` fires on CREATE:
+   - Calls utility Flow `aha_util_Get_Queue_Id` to resolve the `aha_Contractor_Incidents` queue ID
    - Assigns queue as record owner
-   - Invokes Prompt Template action `generatePromptResponse-hx_Contractor_Incident_Email`
+   - Invokes Prompt Template action `generatePromptResponse-aha_Contractor_Incident_Email`
    - Writes structured LLM response back to record fields
 
 ### Key Components
 
 | Type | Name | Purpose |
 |------|------|---------|
-| Apex | `hx_ContractorIncidentEmailParser` | InboundEmailHandler — creates incident record |
-| Object | `Contractor_Incident__c` | Core data record |
-| Flow | `hx Contractor Incident - Populate from Email` | Orchestrates queue assignment + AI enrichment |
-| Flow | `hx_util_Get_Queue_Id` | Utility: returns Queue ID by name |
-| Flow | `hx Contractor Incident Panel` | (Panel/screen flow) |
-| Queue | `Contractor_Incidents` | Owns newly created incident records |
-| Prompt Template | `hx Contractor Incident - Email` | Extracts structured data from email body via LLM |
-| Lightning Type | `hxContractorIncidentOBLTv4` | JSON schema that shapes the LLM's structured output |
+| Apex | `aha_ContractorIncidentEmailParser` | InboundEmailHandler — creates incident record |
+| Object | `aha_Contractor_Incident__c` | Core data record |
+| Flow | `aha Contractor Incident - Populate from Email` | Orchestrates queue assignment + AI enrichment |
+| Flow | `aha_util_Get_Queue_Id` | Utility: returns Queue ID by name |
+| Flow | `aha Contractor Incident Panel` | (Panel/screen flow) |
+| Queue | `aha_Contractor_Incidents` | Owns newly created incident records |
+| Prompt Template | `aha Contractor Incident - Email` | Extracts structured data from email body via LLM |
+| Lightning Type | `ahaContractorIncidentOBLTv4` | JSON schema that shapes the LLM's structured output |
 
 ### Prompt Template Behaviour
 
-The template (`hx Contractor Incident - Email`) instructs the LLM to:
+The template (`aha Contractor Incident - Email`) instructs the LLM to:
 - Locate the "Incident Report" section in the email thread
-- Extract structured fields into the `hxContractorIncidentOBLTv4` JSON schema
+- Extract structured fields into the `ahaContractorIncidentOBLTv4` JSON schema
 - Copy the Activity section verbatim to the `Activity` field
 - Return ISO 8601 dates, booleans as `true`/`false`
 - Return raw JSON only — no markdown wrapping
 
 ## Naming Conventions
 
-- Apex classes / custom fields: `hx_` prefix (e.g. `hx_ContractorIncidentEmailParser`, `hx_Email_From__c`)
-- Flows and Prompt Templates: `hx ` prefix with spaces (e.g. `hx Contractor Incident - Populate from Email`)
-- Lightning Types: camelCase with version suffix (e.g. `hxContractorIncidentOBLTv4`)
-- Queues: PascalCase with underscores (e.g. `Contractor_Incidents`)
+- Apex classes / custom fields: `aha_` prefix (e.g. `aha_ContractorIncidentEmailParser`, `aha_Email_From__c`)
+- Flows and Prompt Templates: `aha ` prefix with spaces (e.g. `aha Contractor Incident - Populate from Email`)
+- Lightning Types: camelCase with version suffix (e.g. `ahaContractorIncidentOBLTv4`)
+- Queues: PascalCase with underscores (e.g. `aha_Contractor_Incidents`)
 
 ## Salesforce Setup Reference
 
 - Email Service config: **Setup > Custom Code > Email Services**
-- Prompt Template invoked via Flow action: `generatePromptResponse-hx_Contractor_Incident_Email`
+- Prompt Template invoked via Flow action: `generatePromptResponse-aha_Contractor_Incident_Email`
 - Lightning Type documentation: https://developer.salesforce.com/docs/platform/lightning-types/guide/lightning-types-object.html
 - Apex Email Service documentation: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_email_inbound_what_is.htm

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Converts an email containing a Contractor Incident into a structured object</description>
-    <developerName>hx_Contractor_Incident_Email</developerName>
-    <masterLabel>hx Contractor Incident - Email</masterLabel>
+    <developerName>aha_Contractor_Incident_Email</developerName>
+    <masterLabel>aha Contractor Incident - Email</masterLabel>
     <overridable>false</overridable>
 
     <templateVersions>
@@ -25,7 +25,7 @@ The input contains a full email thread. Locating the &quot;Incident Report&quot;
 5. Return dates as a string in the ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
 
 ### FIELD MATCHING GUIDANCE
-- Utilise the hxContractorIncidentOBLTv4 type descriptions and the Lightning Contractor Incident scheme to map the correct free text to the fields.
+- Utilise the ahaContractorIncidentOBLTv4 type descriptions and the Lightning Contractor Incident scheme to map the correct free text to the fields.
 - jobStatus: This relates to &quot;Job Status / Outcome&quot;. If this is not supplied, discern the outcome of the job from the Activities section.
 - Activity field: Generally the final part of the Incident Report will contain an Activity section. The entire Activity section must be copied as-is to the Activity field.
 
@@ -65,7 +65,7 @@ Do NOT hallucinate any answer. Simply leave the fields blank if the data can&apo
             <required>true</required>
         </inputs>
         <isCitationEnabled>false</isCitationEnabled>
-        <outputSchema>hxContractorIncidentOBLTv4</outputSchema>
+        <outputSchema>ahaContractorIncidentOBLTv4</outputSchema>
         <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
         <responseFormat>JSON</responseFormat>
         <status>Published</status>

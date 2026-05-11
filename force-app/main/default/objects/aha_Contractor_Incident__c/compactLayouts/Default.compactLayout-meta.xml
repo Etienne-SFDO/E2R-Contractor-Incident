@@ -5,7 +5,7 @@
     <fields>Claimant_Name__c</fields>
     <fields>Incident_Date__c</fields>
     <fields>Case_Reference__c</fields>
-    <fields>hx_AI_Enrichment_Status__c</fields>
-    <fields>hx_Sourced_from_Email__c</fields>
+    <fields>aha_AI_Enrichment_Status__c</fields>
+    <fields>aha_Sourced_from_Email__c</fields>
     <label>Default</label>
 </CompactLayout>

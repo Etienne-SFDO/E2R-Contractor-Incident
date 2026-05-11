@@ -4,8 +4,8 @@
     <columns>NAME</columns>
     <columns>CREATED_DATE</columns>
     <columns>CREATEDBY_USER</columns>
-    <columns>hx_Sourced_from_Email__c</columns>
-    <columns>hx_AI_Enrichment_Status__c</columns>
+    <columns>aha_Sourced_from_Email__c</columns>
+    <columns>aha_AI_Enrichment_Status__c</columns>
     <columns>OWNER.ALIAS</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>

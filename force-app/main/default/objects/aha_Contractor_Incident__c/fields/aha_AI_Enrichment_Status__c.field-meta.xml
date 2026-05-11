@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>hx_AI_Enrichment_Status__c</fullName>
+    <fullName>aha_AI_Enrichment_Status__c</fullName>
     <inlineHelpText>Control Field - Indicates that the record was successfully populated by AI. It may subsequently have been updated by a human or other process.</inlineHelpText>
     <label>AI Enrichment Status</label>
     <required>false</required>

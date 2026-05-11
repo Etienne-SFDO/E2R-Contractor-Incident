@@ -17,8 +17,8 @@
     </assignments>
     <description>Returns the Queue Id for the given developer name or label/friendly name</description>
     <environments>Default</environments>
-    <interviewLabel>hx_util_Get_Queue_Id {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>hx_util_Get_Queue_Id</label>
+    <interviewLabel>aha_util_Get_Queue_Id {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>aha_util_Get_Queue_Id</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

@@ -2,7 +2,7 @@
   "lightning:supportsPersonalization" : true,
   "description" : "Object-based Lightning Type schema for Contractor Incident (v4, API 65.0-aligned, date/time as text).",
   "lightning:type" : "lightning__objectType",
-  "title" : "hxContractorIncidentOBLTv4",
+  "title" : "ahaContractorIncidentOBLTv4",
   "required" : [ ],
   "properties" : {
     "incidentDateTimeString" : {

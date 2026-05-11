@@ -2,13 +2,13 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contractor_Incidents_Contractor_Incident</fullName>
     <columns>NAME</columns>
-    <columns>hx_AI_Enrichment_Status__c</columns>
-    <columns>hx_Sourced_from_Email__c</columns>
-    <columns>hx_Email_From__c</columns>
-    <columns>hx_Email_Subject__c</columns>
+    <columns>aha_AI_Enrichment_Status__c</columns>
+    <columns>aha_Sourced_from_Email__c</columns>
+    <columns>aha_Email_From__c</columns>
+    <columns>aha_Email_Subject__c</columns>
     <filterScope>Queue</filterScope>
     <label>Contractor Incidents Queue</label>
-    <queue>Contractor_Incidents</queue>
+    <queue>aha_Contractor_Incidents</queue>
     <sharedTo>
         <allInternalUsers></allInternalUsers>
     </sharedTo>

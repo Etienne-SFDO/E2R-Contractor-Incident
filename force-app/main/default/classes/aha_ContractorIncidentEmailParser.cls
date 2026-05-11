@@ -1,4 +1,4 @@
-global class hx_ContractorIncidentEmailParser implements Messaging.InboundEmailHandler {
+global class aha_ContractorIncidentEmailParser implements Messaging.InboundEmailHandler {
     global Messaging.InboundEmailResult handleInboundEmail(Messaging.InboundEmail email, Messaging.InboundEnvelope envelope) {
         Messaging.InboundEmailResult result = new Messaging.InboundEmailResult();
         
@@ -14,18 +14,18 @@ global class hx_ContractorIncidentEmailParser implements Messaging.InboundEmailH
             }
 
             // 2. Create the Contractor Incident record
-            Contractor_Incident__c incident = new Contractor_Incident__c(
-                hx_Email_From__c = email.fromAddress,
-                hx_Email_Subject__c = email.subject,
-                hx_Email_Body__c = emailBody,
-                hx_Sourced_from_Email__c = true,
-                hx_AI_Enrichment_Status__c = 'Pending'
+            aha_Contractor_Incident__c incident = new aha_Contractor_Incident__c(
+                aha_Email_From__c = email.fromAddress,
+                aha_Email_Subject__c = email.subject,
+                aha_Email_Body__c = emailBody,
+                aha_Sourced_from_Email__c = true,
+                aha_AI_Enrichment_Status__c = 'Pending'
             );
             insert incident;
 
             result.success = true;
         } catch (Exception e) {
-            System.debug(LoggingLevel.ERROR, 'hx_ContractorIncidentEmailParser failed: ' + e.getMessage() + ' | ' + e.getStackTraceString());
+            System.debug(LoggingLevel.ERROR, 'aha_ContractorIncidentEmailParser failed: ' + e.getMessage() + ' | ' + e.getStackTraceString());
             result.success = false;
         }
         return result;

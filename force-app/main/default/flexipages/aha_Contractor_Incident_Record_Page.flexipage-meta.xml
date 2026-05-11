@@ -570,8 +570,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.hx_Email_From__c</fieldItem>
-                <identifier>Recordhx_Email_From_cField</identifier>
+                <fieldItem>Record.aha_Email_From__c</fieldItem>
+                <identifier>RecordAha_Email_From_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -580,8 +580,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.hx_Email_Subject__c</fieldItem>
-                <identifier>Recordhx_Email_Subject_cField</identifier>
+                <fieldItem>Record.aha_Email_Subject__c</fieldItem>
+                <identifier>RecordAha_Email_Subject_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -590,8 +590,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.hx_Email_Body__c</fieldItem>
-                <identifier>Recordhx_Email_Body_cField</identifier>
+                <fieldItem>Record.aha_Email_Body__c</fieldItem>
+                <identifier>RecordAha_Email_Body_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-c389286c-033b-468c-8b46-8239942b7bf7</name>
@@ -687,8 +687,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.hx_AI_Enrichment_Status__c</fieldItem>
-                <identifier>Recordhx_AI_Enriched_Status__cField</identifier>
+                <fieldItem>Record.aha_AI_Enrichment_Status__c</fieldItem>
+                <identifier>RecordAha_AI_Enrichment_Status__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -697,8 +697,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.hx_Sourced_from_Email__c</fieldItem>
-                <identifier>Recordhx_Sourced_from_Email__cField</identifier>
+                <fieldItem>Record.aha_Sourced_from_Email__c</fieldItem>
+                <identifier>Recordaha_Sourced_from_Email__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -886,7 +886,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>flowName</name>
-                    <value>hx_Contractor_Incident_Panel</value>
+                    <value>aha_Contractor_Incident_Panel</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
                 <identifier>flowruntime_interview</identifier>
@@ -898,7 +898,7 @@
     </flexiPageRegions>
     <masterLabel>Contractor Incident Record Page</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
-    <sobjectType>Contractor_Incident__c</sobjectType>
+    <sobjectType>aha_Contractor_Incident__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>

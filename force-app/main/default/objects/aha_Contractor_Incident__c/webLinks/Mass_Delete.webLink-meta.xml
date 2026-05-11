@@ -11,5 +11,5 @@
     <openType>sidebar</openType>
     <protected>false</protected>
     <requireRowSelection>true</requireRowSelection>
-    <url>/flow/HX_Util_MassDelete?retURL=/lightning/o/Contractor_Incident__c/list</url>
+    <url>/flow/HX_Util_MassDelete?retURL=/lightning/o/aha_Contractor_Incident__c/list</url>
 </WebLink>

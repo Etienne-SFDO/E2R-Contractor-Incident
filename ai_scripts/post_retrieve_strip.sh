@@ -13,7 +13,7 @@ echo ">>> Stripping org-specific artifacts..."
 # ── Email Service ──────────────────────────────────────────────────────────────
 # Remove the emailServicesAddresses block (contains hardcoded runAsUser)
 # Disable error routing (errorRoutingAddress contains source-org email)
-EMAIL_SVC="$FORCE_APP/emailservices/ContractorIncidentEmails.xml-meta.xml"
+EMAIL_SVC="$FORCE_APP/emailservices/aha_ContractorIncidentEmails.xml-meta.xml"
 if [ -f "$EMAIL_SVC" ]; then
   # Remove emailServicesAddresses block
   perl -0777 -i -pe 's|\s*<emailServicesAddresses>.*?</emailServicesAddresses>||gs' "$EMAIL_SVC"
@@ -26,25 +26,25 @@ fi
 
 # ── Queue ──────────────────────────────────────────────────────────────────────
 # Remove hardcoded user members (keep publicGroups)
-QUEUE="$FORCE_APP/queues/Contractor_Incidents.queue-meta.xml"
+QUEUE="$FORCE_APP/queues/aha_Contractor_Incidents.queue-meta.xml"
 if [ -f "$QUEUE" ]; then
   perl -0777 -i -pe 's|\s*<users>.*?</users>||gs' "$QUEUE"
   echo "    ✓ Queue stripped"
 fi
 
 # ── Custom Object ──────────────────────────────────────────────────────────────
-# Remove Flexipage actionOverrides that reference Contractor_Incident_Record_Page
+# Remove Flexipage actionOverrides that reference aha_Contractor_Incident_Record_Page
 # (Lightning App Builder activation writes these; the FlexiPage is now a
 #  separate deployable component so the override is no longer needed here)
-OBJECT="$FORCE_APP/objects/Contractor_Incident__c/Contractor_Incident__c.object-meta.xml"
+OBJECT="$FORCE_APP/objects/aha_Contractor_Incident__c/aha_Contractor_Incident__c.object-meta.xml"
 if [ -f "$OBJECT" ]; then
-  perl -0777 -i -pe 's|\s*<actionOverrides>\s*<actionName>View</actionName>\s*<comment>[^<]*</comment>\s*<content>Contractor_Incident_Record_Page</content>\s*<formFactor>[^<]*</formFactor>\s*<skipRecordTypeSelect>[^<]*</skipRecordTypeSelect>\s*<type>Flexipage</type>\s*</actionOverrides>||gs' "$OBJECT"
+  perl -0777 -i -pe 's|\s*<actionOverrides>\s*<actionName>View</actionName>\s*<comment>[^<]*</comment>\s*<content>aha_Contractor_Incident_Record_Page</content>\s*<formFactor>[^<]*</formFactor>\s*<skipRecordTypeSelect>[^<]*</skipRecordTypeSelect>\s*<type>Flexipage</type>\s*</actionOverrides>||gs' "$OBJECT"
   echo "    ✓ Custom Object FlexiPage action overrides stripped"
 fi
 
 # ── Custom Application ─────────────────────────────────────────────────────────
 # Remove logo reference (points to a ContentAsset that won't exist in target org)
-APP="$FORCE_APP/applications/Hx_Contractor_Incidents.app-meta.xml"
+APP="$FORCE_APP/applications/Hx_aha_Contractor_Incidents.app-meta.xml"
 if [ -f "$APP" ]; then
   sed -i '' 's|<logo>.*</logo>||' "$APP"
   sed -i '' 's|<logoVersion>.*</logoVersion>||' "$APP"
@@ -55,7 +55,7 @@ fi
 # Remove activeVersionIdentifier (org-specific hash)
 # Keep only the latest templateVersions block (highest _N suffix)
 # Strip versionIdentifier hashes from remaining version
-PT="$FORCE_APP/genAiPromptTemplates/hx_Contractor_Incident_Email.genAiPromptTemplate-meta.xml"
+PT="$FORCE_APP/genAiPromptTemplates/aha_Contractor_Incident_Email.genAiPromptTemplate-meta.xml"
 if [ -f "$PT" ]; then
   # Remove activeVersionIdentifier line
   sed -i '' '/<activeVersionIdentifier>/d' "$PT"
@@ -79,8 +79,8 @@ fi
 # ── Flows ──────────────────────────────────────────────────────────────────────
 # Set GenAI flows to Draft (Metadata API cannot deploy them as Active)
 for FLOW in \
-  "$FORCE_APP/flows/hx_Contractor_Incident_Populate_from_Email.flow-meta.xml" \
-  "$FORCE_APP/flows/hx_Contractor_Incident_Panel.flow-meta.xml"
+  "$FORCE_APP/flows/aha_Contractor_Incident_Populate_from_Email.flow-meta.xml" \
+  "$FORCE_APP/flows/aha_Contractor_Incident_Panel.flow-meta.xml"
 do
   if [ -f "$FLOW" ]; then
     sed -i '' 's|<status>Active</status>|<status>Draft</status>|' "$FLOW"

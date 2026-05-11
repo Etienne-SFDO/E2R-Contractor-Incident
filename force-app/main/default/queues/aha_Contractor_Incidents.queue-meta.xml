@@ -9,6 +9,6 @@
         </publicGroups>
     </queueMembers>
     <queueSobject>
-        <sobjectType>Contractor_Incident__c</sobjectType>
+        <sobjectType>aha_Contractor_Incident__c</sobjectType>
     </queueSobject>
 </Queue>

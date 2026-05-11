@@ -166,7 +166,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hx_Email_Body__c</field>
+                <field>aha_Email_Body__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -179,11 +179,11 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hx_AI_Enrichment_Status__c</field>
+                <field>aha_AI_Enrichment_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hx_Sourced_from_Email__c</field>
+                <field>aha_Sourced_from_Email__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -191,11 +191,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hx_Email_From__c</field>
+                <field>aha_Email_From__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hx_Email_Subject__c</field>
+                <field>aha_Email_Subject__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

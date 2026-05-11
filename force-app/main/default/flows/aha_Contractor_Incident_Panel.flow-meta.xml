@@ -5,7 +5,7 @@
         <label>LLM</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>hx_Contractor_Incident_Email</actionName>
+        <actionName>aha_Contractor_Incident_Email</actionName>
         <actionType>generatePromptResponse</actionType>
         <connector>
             <targetReference>MapResponse</targetReference>
@@ -21,7 +21,7 @@
                 <elementReference>Input_Incident_Report</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>hx_Contractor_Incident_Email</nameSegment>
+        <nameSegment>aha_Contractor_Incident_Email</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
@@ -187,7 +187,7 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>contractor_incident.hx_AI_Enrichment_Status__c</assignToReference>
+            <assignToReference>contractor_incident.aha_AI_Enrichment_Status__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <stringValue>Enriched</stringValue>
@@ -212,8 +212,8 @@
     </customProperties>
     <description>Designed to run on a Contractor Incident record. This flow will parse the free text input and fill out the fields.</description>
     <environments>Default</environments>
-    <interviewLabel>hx Contractor Incident Panel {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>hx Contractor Incident Panel</label>
+    <interviewLabel>aha Contractor Incident Panel {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>aha Contractor Incident Panel</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -356,7 +356,7 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Contractor_Incident__c</objectType>
+        <objectType>aha_Contractor_Incident__c</objectType>
     </variables>
     <variables>
         <name>txtLlmResponse</name>
