@@ -19,17 +19,17 @@ This solution uses Prompt Templates. Check that your Salesforce org / sandbox ha
 - Enable Einstein / Gen AI
 
 >Setup > Einstein Setup > Turn On Einstein
-  
-- Check that **Prompt Templates** exist 
->App Launcher > Agentforce Studio > Prompt Templates 
+
+- Check that **Prompt Templates** exist
+>App Launcher > Agentforce Studio > Prompt Templates
 
 - Check that the **Salesforce CLI** (Command Line Interface) is installed. [Install guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 
 ```bash
-  sf --version
-  sf --update
-  # Ensure CLI is authenticated to your org and set to default:
-  sf org login web --alias my-org-alias --set-default
+sf --version
+sf --update
+# Ensure CLI is authenticated to your org and set to default:
+sf org login web --alias my-org-alias --set-default
 ```
 
 ***
@@ -45,23 +45,27 @@ cd Email_to_Contractor
 
 ### 2. Deploy to your org
 
-Deploy in three steps — order matters:
+Deploy in three steps — order matters due to Salesforce metadata dependencies.
 
-# Step 1: Lightning Type (must exist before Prompt Template)
+#### Step 1 — Lightning Type
+
+Must exist before the Prompt Template or Flows reference it.
 
 ```bash
 sf project deploy start --source-dir force-app/main/default/lightningTypes --target-org <your-alias>
 ```
 
-# Step 2: Prompt Template (must exist before Flows)
+#### Step 2 — Prompt Template
 
-``` bash
+Must exist before Flows that call it as an action.
+
+```bash
 sf project deploy start --source-dir force-app/main/default/genAiPromptTemplates --target-org <your-alias>
 ```
 
-# Step 3: Everything else
+#### Step 3 — Everything else
 
-``` bash
+```bash
 sf project deploy start \
   --source-dir force-app/main/default/objects \
   --source-dir force-app/main/default/classes \
@@ -74,56 +78,71 @@ sf project deploy start \
   --target-org <your-alias>
 ```
 
+---
 
-🚧 ACTION REQUIRED 
-### 3. Grant Permissions to your User
+# ⚙️ Post-Deployment Configuration
 
-1. Grant all Object & Field permissions to the aha_Contractor_Incident__c object
+> Complete all steps below **in the target org** after the three deploy commands above succeed. Do them in order.
 
+### 1. Grant Permissions
 
+The `aha_Contractor_Incident__c` object has no permission set included in this project. Users will not see the object or its tab until permissions are granted.
 
+1. Go to **Setup > Permission Sets** (or **Profiles** if you are using profiles)
+2. Open the relevant permission set / profile for your users
+3. Under **Object Settings > Contractor Incident**, set:
+   - Object: Read, Create, Edit (add Delete if needed)
+   - Fields: enable Read/Edit on all `aha_` fields as required
+4. Save, then assign the permission set to the target users if using a permission set
 
-🚧 ACTION REQUIRED
-### 4. Set the Prompt Template Lightning Type
+### 2. Validate and Activate Prompt Template
 
-Check that the the Lightning Object Type association was set during deployment, if not set manually:
+The template deploys with settings intact, but must be saved as a new version and activated before it can be invoked by the Flow.
 
 1. Go to **Setup > Prompt Builder**
 2. Open **aha Contractor Incident - Email**
-3. Edit the template and set the following under Template Settings > Details > Response:
-- Response Format = JSON
-- Response Structure = `ahaContractorIncidentOBLTv4`
-4. Save as new version and Activate
+3. Click **Edit** and review all settings — verify the prompt text, the grounding object, and that **Response Format / Lightning Object Type** is set to `ahaContractorIncidentOBLTv4`
+4. Click **Save as New Version**
+5. Click **Activate** on the new version
 
+### 3. Activate Flows
 
+Flows deploy as Draft and must be saved as a new version before activating.
 
+1. Go to **Setup > Flows**
+2. Open **aha Contractor Incident - Populate from Email**
+   - Click **Edit**
+   - Click **Save as New Version**
+   - Click **Activate**
+3. Open **aha Contractor Incident Panel**
+   - Click **Edit**
+   - Click **Save as New Version**
+   - Click **Activate**
 
-🚧 ACTION REQUIRED
-### 5. Activate the flows manually
+### 4. Activate the Lightning Record Page
 
-Two flows deploy as **Draft** due to a Salesforce platform limitation with GenAI flow actions. 
-Open each in Flow Builder and click **Save & Activate**:  (Save as New Version if an error occurs)
+The Lightning page for `aha_Contractor_Incident__c` deploys but is not set as the org default.
 
+1. Navigate to the **Contractor Incident** tab and open (or create) any record
+2. Click the **Setup (gear) icon** in the top-right > **Edit Page**
+3. Click **Save**, then click **Activation**
+4. Select **Org Default** and click **Assign as Org Default**
+5. Save and close
 
-- `aha Contractor Incident - Populate from Email`
-- `aha Contractor Incident Panel`
+### 5. Configure Email Service
 
-
-
-
-🚧 ACTION REQUIRED
-### 5. Configure the Email Service
-
-The Email Service deploys without an address (addresses are org-specific). Set it up manually:
+The Email Service deploys without an address because the `runAsUser` is org-specific.
 
 1. Go to **Setup > Custom Code > Email Services**
 2. Open **aha_ContractorIncidentEmails**
 3. Click **New Email Address**
-4. Set **Run As User** to an active user in your org
-5. Save — note the generated email address; this is what contractors send reports to
+4. Set **Run As User** to a valid active user in the target org
+5. Save and note the generated email address — this is what contractors send reports to
 
 **Optional — restrict which senders are accepted:**
-On the Email Service record, the **Accept Email From** field can be set to a comma-separated list of email addresses or domains (e.g. `contractor.com, anothercompany.co.uk`). By default this is empty, meaning all senders are accepted. Set this if you want to restrict incoming emails to known contractor domains.
+On the Email Service record, the **Accept Email From** field can be set to a comma-separated list of email addresses or domains (e.g. `contractor.com, anothercompany.co.uk`). By default this is empty, meaning all senders are accepted.
+
+---
 
 ## Customising the Prompt Template
 
@@ -149,7 +168,6 @@ The prompt template (`aha Contractor Incident - Email`) contains example context
 ## Reinstalling
 
 This install is not designed to handle upgrades. Before reinstalling, it is recommended to manually remove the components and then run the installation steps from scratch.
-
 
 ## For Maintainers / Contributors
 
