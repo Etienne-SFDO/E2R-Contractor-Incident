@@ -183,4 +183,21 @@ See `DEPLOYMENT.md` for full details on the deploy order rationale and known iss
 
 ## Contributing
 
-This is an open source project. Contributions welcome — please open an issue or PR on GitHub.
+This is an open source project. Contributions welcome. Ways to contribute
+- Join the Saleforce Open Source Commons
+- If you work at a Housing Association? - Volunteer via Housing Foundation
+- Contact edeklerk at salesforce
+- Open an issue or PR on GitHub.
+
+
+### Potential Additions
+- Add a permisssion set 'aha_Email_to_Record' with relevant permissions
+- Process attachments
+  - Text documents
+  - Images / Scans
+  - Process ideally via D360° as the document handling is more rugged than generic LLM
+- Prompt to handle schema drift
+- Documentation
+  - Example email content
+  - Installation video
+  - Installation doc with images
